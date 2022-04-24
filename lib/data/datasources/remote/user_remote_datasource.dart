@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:loggy/loggy.dart';
 
 import '../../../domain/entities/random_user.dart';
 import '../../models/random_user_json_response_model.dart';
@@ -18,7 +19,7 @@ class UserRemoteDatatasource {
 
     var response = await http.get(request);
     if (response.statusCode == 200) {
-      print("Got code 200");
+      logInfo("Got code 200");
 
       var jsonString = response.body;
 
@@ -28,7 +29,7 @@ class UserRemoteDatatasource {
 
       return RandomUserModel.fromRemote(userRemoteModel).toEntity();
     } else {
-      print("Got error code ${response.statusCode}");
+      logError("Got error code ${response.statusCode}");
     }
 
     return Future.error("error");
