@@ -2,6 +2,7 @@ import '../../data/models/random_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../domain/entities/random_user.dart';
 import '../controllers/user_controller.dart';
 
 class UserDetailPage extends StatefulWidget {
@@ -12,7 +13,7 @@ class UserDetailPage extends StatefulWidget {
 }
 
 class _UserDetailPageState extends State<UserDetailPage> {
-  RandomUserModel user = Get.arguments[0];
+  RandomUser user = Get.arguments[0];
 
   final controllerName = TextEditingController();
   final controllerCity = TextEditingController();
@@ -27,7 +28,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
         title: Text(user.name),
         actions: [
           IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () async {
               await userController.deleteUser(user.id);
               Get.back();
@@ -39,24 +40,24 @@ class _UserDetailPageState extends State<UserDetailPage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
                 controller: controllerName,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Name',
                 )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
-                key: Key('TextFieldCity'),
+                key: const Key('TextFieldCity'),
                 controller: controllerCity,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'City',
                 )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -68,13 +69,13 @@ class _UserDetailPageState extends State<UserDetailPage> {
                       flex: 2,
                       child: ElevatedButton(
                           onPressed: () async {
-                            RandomUserModel userM = user;
+                            RandomUser userM = user;
                             userM.name = controllerName.text;
                             userM.city = controllerCity.text;
                             await userController.updateUser(userM);
                             Get.back();
                           },
-                          child: Text("Save")))
+                          child: const Text("Save")))
                 ],
               ),
             )

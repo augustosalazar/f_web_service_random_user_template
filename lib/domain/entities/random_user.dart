@@ -8,7 +8,7 @@ class RandomUser {
     required this.city,
   });
 
-  final int? id;
+  int? id;
   String name;
   final String gender;
   final String email;
