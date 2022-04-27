@@ -76,19 +76,9 @@ class MockUserController extends GetxService
           picture: 'https://randomuser.me/api/portraits/thumb/men/75.jpg');
       _users.add(user);
       cont++;
-    } else if (cont == 1) {
-      RandomUser user = RandomUser(
-          id: 1,
-          city: 'Barranquilla',
-          gender: 'Masculino',
-          email: 'jhanu@mail.com',
-          name: 'Jhan Utria',
-          picture: 'https://randomuser.me/api/portraits/thumb/men/75.jpg');
-      _users.add(user);
-      cont++;
     } else {
       RandomUser user = RandomUser(
-          id: 2,
+          id: 1,
           city: 'Barranquilla',
           gender: 'Masculino',
           email: 'jhanu@mail.com',
