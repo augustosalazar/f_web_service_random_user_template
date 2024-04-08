@@ -7,7 +7,7 @@ import '../../../domain/entities/random_user.dart';
 import '../../models/random_user_json_response_model.dart';
 import '../../models/random_user_model.dart';
 
-class UserRemoteDataSource {
+class UserRemoteDatatasource {
   Future<RandomUser> getUser() async {
     //https://randomuser.me/api/?format=json&results=1
 

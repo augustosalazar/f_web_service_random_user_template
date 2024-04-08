@@ -50,7 +50,7 @@ class ListItem extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  Get.to(() => UserDetailPage(), arguments: [user, user.id]);
+                  Get.toNamed('userdetail', arguments: [user, user.id]);
                 },
                 child: const Text("more"),
               )

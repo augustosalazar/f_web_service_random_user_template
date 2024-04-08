@@ -4,7 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:loggy/loggy.dart';
 
 import 'core/network_info.dart';
-import 'domain/repositories/user_repository.dart';
+import 'data/repositories/user_repository.dart';
 import 'domain/use_case/users.dart';
 import 'ui/controllers/home_controller.dart';
 import 'ui/home.dart';

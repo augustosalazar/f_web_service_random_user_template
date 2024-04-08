@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
-
-import '../../data/models/random_user_model.dart';
-import '../entities/random_user.dart';
-import '../repositories/user_repository.dart';
+import '../repositories/iuserrepository.dart';
 
 class Users {
 
+  IUserRepository repository = Get.find();
+  
   Future<void> addUser() async => 
   Future<List<RandomUser>> getAllUsers() async =>
   Future<void> deleteUser(id) async => 

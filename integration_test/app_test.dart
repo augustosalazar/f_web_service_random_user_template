@@ -1,6 +1,6 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:f_web_service_random_user_template/core/network_info.dart';
-import 'package:f_web_service_random_user_template/domain/repositories/user_repository.dart';
+import 'package:f_web_service_random_user_template/data/repositories/user_repository.dart';
 import 'package:f_web_service_random_user_template/domain/use_case/users.dart';
 import 'package:f_web_service_random_user_template/ui/controllers/home_controller.dart';
 import 'package:f_web_service_random_user_template/ui/home.dart';

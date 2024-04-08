@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../home_binding.dart';
 import 'controllers/user_controller.dart';
+import 'pages/user_detail_page.dart';
 import 'pages/user_list_page.dart';
 
 class Home extends StatelessWidget {
@@ -9,11 +11,23 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(UserController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: UserListPage(),
+      initialBinding: HomeBinding(),
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => UserListPage(),
+          binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/userdetail',
+          page: () => const UserDetailPage(),
+          binding: HomeBinding(),
+        ),
+      ],
     );
   }
 }
