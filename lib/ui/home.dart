@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../home_binding.dart';
-import 'controllers/user_controller.dart';
 import 'pages/user_detail_page.dart';
 import 'pages/user_list_page.dart';
 

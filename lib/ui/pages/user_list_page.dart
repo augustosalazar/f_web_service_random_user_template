@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../controllers/home_controller.dart';
+import '../controllers/connectivity_controller.dart';
 import '../controllers/user_controller.dart';
 import '../widgets/list_item.dart';
 
 class UserListPage extends StatelessWidget {
   UserListPage({Key? key}) : super(key: key);
-  UserController userController = Get.find();
+  final UserController userController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class UserListPage extends StatelessWidget {
             },
             icon: const Icon(Icons.delete))
       ]),
-      floatingActionButton: GetX<HomeController>(
+      floatingActionButton: GetX<ConnectivityController>(
         builder: (controller) {
           return FloatingActionButton(
             key: const Key('addUserButton'),

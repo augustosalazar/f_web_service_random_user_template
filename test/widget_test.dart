@@ -1,20 +1,13 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:f_web_service_random_user_template/core/network_info.dart';
 import 'package:f_web_service_random_user_template/domain/entities/random_user.dart';
 import 'package:f_web_service_random_user_template/domain/use_case/users.dart';
-import 'package:f_web_service_random_user_template/ui/controllers/home_controller.dart';
+import 'package:f_web_service_random_user_template/ui/controllers/connectivity_controller.dart';
 import 'package:f_web_service_random_user_template/ui/controllers/user_controller.dart';
 import 'package:f_web_service_random_user_template/ui/pages/user_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:f_web_service_random_user_template/main.dart';
+import 'package:loggy/loggy.dart';
 import 'package:mockito/mockito.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
@@ -24,8 +17,8 @@ class MockGets with Mock implements Users {}
 
 class MockHomeController extends GetxService
     with Mock
-    implements HomeController {
-  var _connection = true.obs;
+    implements ConnectivityController {
+  final _connection = true.obs;
   @override
   Future onInit() {
     super.onInit();
@@ -39,7 +32,7 @@ class MockHomeController extends GetxService
 class MockUserController extends GetxService
     with Mock
     implements UserController {
-  var _users = <RandomUser>[].obs;
+  final _users = <RandomUser>[].obs;
   int cont = 0;
   @override
   List<RandomUser> get users => _users;
@@ -52,7 +45,7 @@ class MockUserController extends GetxService
 
   @override
   Future<void> deleteUser(id) {
-    print("local deleteUser $id");
+    logInfo("local deleteUser $id");
     _users.removeAt(id);
     return Future.value();
   }
@@ -65,7 +58,7 @@ class MockUserController extends GetxService
 
   @override
   Future<void> addUser() async {
-    print("local addUser");
+    logInfo("local addUser");
     if (cont == 0) {
       RandomUser user = RandomUser(
           id: 0,
@@ -96,7 +89,7 @@ void main() {
     Get.put<NetworkInfo>(_mockNetworkInfo);
 
     final MockHomeController _mockHome = MockHomeController();
-    Get.put<HomeController>(_mockHome);
+    Get.put<ConnectivityController>(_mockHome);
 
     final MockGets _mockGets = MockGets();
     Get.put<Users>(_mockGets);

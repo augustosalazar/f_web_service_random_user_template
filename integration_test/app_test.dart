@@ -1,8 +1,9 @@
-import 'package:connectivity/connectivity.dart';
 import 'package:f_web_service_random_user_template/core/network_info.dart';
 import 'package:f_web_service_random_user_template/data/repositories/user_repository.dart';
+import 'package:f_web_service_random_user_template/domain/repositories/iuserrepository.dart';
 import 'package:f_web_service_random_user_template/domain/use_case/users.dart';
-import 'package:f_web_service_random_user_template/ui/controllers/home_controller.dart';
+import 'package:f_web_service_random_user_template/ui/controllers/connectivity_controller.dart';
+import 'package:f_web_service_random_user_template/ui/controllers/user_controller.dart';
 import 'package:f_web_service_random_user_template/ui/home.dart';
 import 'package:f_web_service_random_user_template/ui/widgets/list_item.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,11 @@ Future<Widget> createHomeScreen() async {
       showColors: true,
     ),
   );
-  Get.put(Connectivity());
-  Connectivity c = Get.find();
-  Get.put(NetworkInfo(connectivity: c));
-  Get.put(UserRepository());
-  Get.put(Users());
-  Get.put(HomeController());
+  Get.put(NetworkInfo());
+  Get.put(ConnectivityController());
+  Get.put<IUserRepository>(UserRepository());
+  Get.put<Users>(Users());
+  Get.put<UserController>(UserController(userUseCase: Get.find()));
   return const Home();
 }
 
