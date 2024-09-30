@@ -6,20 +6,48 @@ on:
       - main
 
 jobs:
-  IOS:
-    runs-on: macOS-latest
+  # IOS:
+  #   runs-on: macOS-latest
 
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - uses: futureware-tech/simulator-action@v3
+  #       with:
+  #         model: 'iPhone 14'
+
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         channel: 'stable'
+
+  #     - run: flutter pub get
+  #     - run: flutter test integration_test
+
+ integration-test:
+    name: Run Smoke Tests
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
 
-      - uses: futureware-tech/simulator-action@v3
+      - name: 🦋 Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          model: 'iPhone 14'
+          channel: "stable"
+          cache: true
 
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
+      - name: 🌐 Flutter Enable Web
+        run: flutter config --enable-web
 
-      - run: flutter pub get
-      - run: flutter test integration_test
+      - name: 🚀 Start Safari Driver
+        run: |
+          sudo safaridriver --enable
+          safaridriver --port 4444 &
 
+      - name: 🧪 Run Smoke Test
+        run: |
+          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart -d web-server --release --browser-name=safari
+
+      - name: 🎯 Run Functional Test
+        run: |
+          flutter drive --driver=test_driver/integration_test.dart --target=e2e/functional_test.dart -d web-server --release --browser-name=safari
