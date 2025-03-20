@@ -1,12 +1,11 @@
-import '../../models/random_user_model.dart';
 import 'package:loggy/loggy.dart';
-
 import '../../../domain/entities/random_user.dart';
 
 class UserLocalDataSource {
   List<RandomUser> users = <RandomUser>[];
   static int globalId = 0;
-  addUser(RandomUser user) {
+
+  Future<void> addUser(RandomUser user) async {
     logInfo("Local data source adding user");
     user.id = globalId;
     globalId++;

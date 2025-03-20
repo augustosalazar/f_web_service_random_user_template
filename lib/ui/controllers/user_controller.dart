@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 import '../../domain/entities/random_user.dart';
-import '../../domain/use_case/users.dart';
+import '../../domain/use_case/user_use_case.dart';
 
 class UserController extends GetxController {
   final RxList<RandomUser> _users = <RandomUser>[].obs;
   UserController({required this.userUseCase});
-  Users userUseCase;
+  UserUseCase userUseCase;
 
   List<RandomUser> get users => _users;
 

@@ -1,9 +1,10 @@
-import 'package:get/get.dart';
 import '../entities/random_user.dart';
 import '../repositories/iuserrepository.dart';
 
-class Users {
-  IUserRepository repository = Get.find();
+class UserUseCase {
+  IUserRepository repository;
+
+  UserUseCase(this.repository);
 
   // TODO: implement use case methods calling the repository
   Future<void> addUser() async => Future.value();

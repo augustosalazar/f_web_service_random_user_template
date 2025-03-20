@@ -1,7 +1,5 @@
-import '../../data/models/random_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../domain/entities/random_user.dart';
 import '../controllers/user_controller.dart';
 

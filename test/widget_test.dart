@@ -1,6 +1,6 @@
 import 'package:f_web_service_random_user_template/core/network_info.dart';
 import 'package:f_web_service_random_user_template/domain/entities/random_user.dart';
-import 'package:f_web_service_random_user_template/domain/use_case/users.dart';
+import 'package:f_web_service_random_user_template/domain/use_case/user_use_case.dart';
 import 'package:f_web_service_random_user_template/ui/controllers/connectivity_controller.dart';
 import 'package:f_web_service_random_user_template/ui/controllers/user_controller.dart';
 import 'package:f_web_service_random_user_template/ui/pages/user_list_page.dart';
@@ -13,7 +13,7 @@ import 'package:network_image_mock/network_image_mock.dart';
 
 class MockNetworkInfo with Mock implements NetworkInfo {}
 
-class MockGets with Mock implements Users {}
+class MockGets with Mock implements UserUseCase {}
 
 class MockHomeController extends GetxService
     with Mock
@@ -92,7 +92,7 @@ void main() {
     Get.put<ConnectivityController>(_mockHome);
 
     final MockGets _mockGets = MockGets();
-    Get.put<Users>(_mockGets);
+    Get.put<UserUseCase>(_mockGets);
 
     final MockUserController _mockUser = MockUserController();
     Get.put<UserController>(_mockUser);

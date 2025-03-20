@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
-
 import '../../domain/entities/random_user.dart';
 import '../controllers/user_controller.dart';
-import '../pages/user_detail_page.dart';
 
 class ListItem extends StatelessWidget {
   final RandomUser user;
